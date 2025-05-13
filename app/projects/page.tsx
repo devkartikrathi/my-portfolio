@@ -4,7 +4,7 @@ import { projects } from "./project-data";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Nextfolio Projects",
+  description: "Kartik Rathi's Projects",
 };
 
 export default function Projects() {

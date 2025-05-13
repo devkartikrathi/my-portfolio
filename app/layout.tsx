@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
-
+import Particles from "./components/particles";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -82,6 +82,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Particles
+            className="absolute inset-0 -z-10 animate-fade-in"
+            quantity={100}
+          />
           <main className="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[624px] w-full">
             <Navbar />
             {children}
