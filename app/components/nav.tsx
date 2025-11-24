@@ -1,33 +1,41 @@
+"use client";
+
 import Link from "next/link";
-import { ThemeSwitch } from "./theme-switch";
-import { metaData } from "../config";
+import { usePathname } from "next/navigation";
+import { cn } from "@/app/lib/utils";
+import { motion } from "framer-motion";
 
-const navItems = {
-  "/projects": { name: "Projects" },
-};
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "#about" },
+  { name: "Experience", path: "#experience" },
+  { name: "Projects", path: "#projects" },
+  { name: "Contact", path: "#contact" },
+];
 
-export function Navbar() {
+export function Nav() {
+  const pathname = usePathname();
+
   return (
-    <nav className="lg:mb-16 mb-12 py-5">
-      <div className="flex flex-col md:flex-row md:items-center justify-between">
-        <div className="flex items-center">
-          <Link href="/" className="text-3xl font-semibold">
-            {metaData.title}
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4"
+    >
+      <div className="flex items-center gap-1 rounded-full border bg-background/80 px-4 py-2 backdrop-blur-md shadow-sm">
+        {navItems.map((item) => (
+          <Link
+            key={item.path}
+            href={item.path}
+            className={cn(
+              "relative px-3 py-1.5 text-sm font-medium transition-colors hover:text-foreground/80",
+              pathname === item.path ? "text-foreground" : "text-foreground/60"
+            )}
+          >
+            {item.name}
           </Link>
-        </div>
-        <div className="flex flex-row gap-4 mt-6 md:mt-0 md:ml-auto items-center">
-          {Object.entries(navItems).map(([path, { name }]) => (
-            <Link
-              key={path}
-              href={path}
-              className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative"
-            >
-              {name}
-            </Link>
-          ))}
-          <ThemeSwitch />
-        </div>
+        ))}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
