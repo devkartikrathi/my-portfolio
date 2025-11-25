@@ -11,8 +11,7 @@ export function Contact() {
       <h2 className="text-xl font-bold mb-8">Get in Touch</h2>
       <div className="flex flex-col gap-4">
         <p className="text-muted-foreground">
-          I'm currently looking for full-time opportunities. If you have any
-          questions or just want to say hi, feel free to reach out!
+          {resumeData.contact.text}
         </p>
         <div className="flex gap-4 mt-4">
           <Link
@@ -23,7 +22,7 @@ export function Contact() {
             <span>{resumeData.contact.email}</span>
           </Link>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           {resumeData.contact.social.map((social) => (
             <Link
               key={social.name}

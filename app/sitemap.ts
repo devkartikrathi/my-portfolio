@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next";
-import { metaData } from "./config";
+import { resumeData } from "@/app/data/resume";
 
-const BaseUrl = metaData.baseUrl.endsWith("/")
-  ? metaData.baseUrl
-  : `${metaData.baseUrl}/`;
+const BaseUrl = resumeData.personalWebsiteUrl.endsWith("/")
+  ? resumeData.personalWebsiteUrl
+  : `${resumeData.personalWebsiteUrl}/`;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let routes = ["", "projects"].map((route) => ({

@@ -1,4 +1,4 @@
-import { metaData } from "./config";
+import { resumeData } from "@/app/data/resume";
 
 export default function robots() {
   return {
@@ -7,6 +7,6 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: `${metaData.baseUrl}/sitemap.xml`,
+    sitemap: `${resumeData.personalWebsiteUrl}/sitemap.xml`,
   };
 }

@@ -20,7 +20,6 @@ export function Section({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
       className={cn("py-12 md:py-16 lg:py-24", className)}
       {...props}
     >

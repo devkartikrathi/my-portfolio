@@ -3,15 +3,45 @@ export const resumeData = {
     initials: "KR",
     location: "Delhi-110053, India",
     locationLink: "https://www.google.com/maps/place/Delhi",
-    about:
-        "Software Engineer with a passion for Artificial Intelligence and Machine Learning (AI/ML), experienced in developing intelligent systems, seeking full-time opportunities in SWE and AI/ML development roles.",
     summary:
-        "Software Engineer with a passion for Artificial Intelligence and Machine Learning (AI/ML), experienced in developing intelligent systems, seeking full-time opportunities in SWE and AI/ML development roles.",
-    avatarUrl: "", // Add if available
+        "with a passion for Generative AI and Agentic AI, experienced in developing intelligent systems",
+    avatarUrl: "/profile.png",
     personalWebsiteUrl: "https://kartik-rathi.site",
+    description: "Kartik Rathi's personal website",
+    keywords: [
+        "Kartik Rathi",
+        "Software Engineer",
+        "Generative AI",
+        "Agentic AI",
+        "Full Stack Developer",
+        "Next.js",
+        "React",
+    ],
+    roles: ["Software Engineer"],
+    status: {
+        isAvailable: true,
+        text: "Available for work",
+    },
+    navItems: [
+        { name: "Home", path: "/" },
+        { name: "Experience", path: "#experience" },
+        { name: "Projects", path: "#projects" },
+        { name: "Contact", path: "#contact" },
+    ],
+    skills: [
+        "Python",
+        "GCP",
+        "Docker",
+        "Langchain",
+        "Golang",
+        "AWS",
+        "n8n",
+        "CrewAI",
+    ],
     contact: {
         email: "devkartikrathi@gmail.com",
         tel: "+91 8384007473",
+        text: "I'm currently looking for full-time opportunities. If you have any questions or just want to say hi, feel free to reach out!",
         social: [
             {
                 name: "LinkedIn",
@@ -20,7 +50,7 @@ export const resumeData = {
             },
             {
                 name: "GitHub",
-                url: "https://github.com/devkartikrathi", // Assuming based on username
+                url: "https://github.com/devkartikrathi",
                 icon: "Github",
             },
         ],
@@ -38,84 +68,73 @@ export const resumeData = {
     work: [
         {
             company: "NeedCFO",
-            href: "https://needcfo.com", // Assuming URL
+            href: "https://needcfo.in",
             badges: [],
             location: "Gurugram, India",
             title: "Software Developer Intern",
             logoUrl: "",
             start: "Dec 2024",
             end: "Jun 2025",
-            description:
-                "Designed and implemented a prompt-driven personal finance system utilizing the Google Gemini LLM to allow natural language transaction inputs, reducing input time by over 70% for MSME. Developed an AI-powered transaction processing pipeline alongside OCR-based receipt scanning for a unified smart dashboard experience using Next.js, Prisma, and serverless functions.",
+            description: [
+                "Engineered a prompt-driven finance system using Google Gemini LLM, cutting transaction input time by 70% for MSMEs.",
+                "Built an AI-powered pipeline with OCR receipt scanning and a unified dashboard using Next.js, Prisma, and serverless functions.",
+            ],
         },
         {
             company: "Centre for AI and Robotics @ IIT Mandi",
-            href: "https://iitmandi.ac.in", // Assuming URL
+            href: "https://iitmandi.ac.in",
             badges: [],
             location: "Himachal Pradesh, India",
             title: "Research Intern",
             logoUrl: "",
             start: "Jun 2024",
             end: "Jul 2024",
-            description:
-                "Developed a RAG based chatbot (ChatGITA) and improved the initial accuracy by 30%. Built a dataset of approximately 18,000 question-response pairs via web scraping. Fine-tuned LLAMA2-7B and Gemma-2B models on 18,000 conversations, achieving 85% user satisfaction.",
+            description: [
+                "Developed 'ChatGITA', a RAG-based chatbot, boosting initial response accuracy by 30%.",
+                "Curated a dataset of 18k+ Q&A pairs via web scraping to train domain-specific models.",
+                "Fine-tuned LLAMA2-7B and Gemma-2B models, achieving an 85% user satisfaction rate.",
+            ],
         },
         {
             company: "K.R. Mangalam University",
-            href: "https://krmangalam.edu.in", // Assuming URL
+            href: "https://krmangalam.edu.in",
             badges: [],
             location: "Gurugram, India",
             title: "Educator and Facilitator",
             logoUrl: "",
             start: "Nov 2024",
             end: "Jan 2025",
-            description:
-                "Conducted training for 125 participants in ML, Python, and Orange Data Mining. Achieved a participant rating of 90% as 'Excellent' in engagement and relevance for the program.",
+            description: [
+                "Led comprehensive training for 125+ participants in Machine Learning, Python, and Data Mining.",
+                "Achieved a 90% 'Excellent' rating for program engagement and curriculum relevance.",
+            ],
         },
-    ],
-    skills: [
-        "Python",
-        "Java",
-        "Golang",
-        "Machine Learning",
-        "Generative AI",
-        "Docker",
-        "Fast API",
-        "SQL",
-        "Orange Data Mining",
-        "AWS",
-        "Bedrock",
-        "MongoDB",
-        "Langchain",
-        "nôn",
-        "PowerBI",
-        "GCP",
-        "Kubernetes",
-        "Scikit-Learn",
-        "TensorFlow",
-        "PyTorch",
-        "Numpy",
-        "Pandas",
     ],
     projects: [
         {
             title: "GuardianAI",
             techStack: ["Next.js", "Generative AI", "Neon DB"],
-            description:
-                "A platform to help users understand and analyze their trading patterns and mistakes. Created a summary-based system to reduce token usage and LLM costs. Added real-time data syncing through Zerodha and implemented alerts to guide traders.",
+            description: [
+                "Built a trading analysis platform to identify patterns and mitigate user mistakes.",
+                "Optimized LLM costs by implementing a summary-based token reduction system.",
+                "Integrated real-time Zerodha data syncing and automated trader guidance alerts.",
+            ],
             link: {
                 label: "GitHub",
-                href: "#", // Add link if known
+                href: "#",
             },
         },
         {
             title: "AI Code Iterator",
             techStack: ["Generative AI", "WebContainers"],
-            description:
-                "A code generation platform that uses simple prompts to generate fully functional modern web apps and spin up a webcontainer. Enabled in-browser code generation and compilation using Webcontainers. Integrated accept/reject diff features inspired by V0.dev.",
+            description: [
+                "Developed a prompt-to-app platform generating fully functional web applications.",
+                "Enabled instant in-browser code generation and compilation via WebContainers.",
+                "Implemented V0.dev-inspired diff review features for seamless code iteration.",
+            ],
             link: {
                 label: "GitHub",
-                href: "#", // Add link if known
+                href: "#",
             },
         },
     ],
@@ -125,14 +144,14 @@ export const resumeData = {
             publication: "Materials Today: Proceedings, 2022",
             description:
                 "Explores solar panel recycling, mineral recovery, and the urgent need for a circular economy in renewable energy systems.",
-            link: "#", // Add link if known
+            link: "#",
         },
         {
             title: "The Efficacy of Specialized Language Models in Advancing Educational Outcomes",
             publication: "IJMSRT, 2025",
             description:
                 "Analyzes domain-specific LLMs for personalized, cost-efficient education at scale.",
-            link: "#", // Add link if known
+            link: "#",
         },
     ],
     activities: [

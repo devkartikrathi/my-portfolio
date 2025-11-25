@@ -28,9 +28,11 @@ export function Projects() {
                 </Link>
               )}
             </div>
-            <p className="text-sm text-muted-foreground">
-              {project.description}
-            </p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              {project.description.map((desc, index) => (
+                <li key={index}>{desc}</li>
+              ))}
+            </ul>
             <div className="flex flex-wrap gap-2 mt-auto">
               {project.techStack.map((tech) => (
                 <span

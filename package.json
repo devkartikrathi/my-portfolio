@@ -31,6 +31,7 @@
     "remark-math": "^6.0.0",
     "sugar-high": "^0.8.1",
     "tailwind-merge": "^3.4.0",
+    "tech-stack-icons": "^3.3.2",
     "typescript": "5.7.3"
   },
   "devDependencies": {

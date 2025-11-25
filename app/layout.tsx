@@ -5,11 +5,13 @@ import { cn } from "@/app/lib/utils";
 import { ThemeProvider } from "@/app/components/theme-switch";
 import Particles from "@/app/components/particles";
 
+import { resumeData } from "@/app/data/resume";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Kartik Rathi | Portfolio",
-  description: "Software Engineer specializing in AI/ML and Full Stack Development.",
+  title: `${resumeData.name} | Portfolio`,
+  description: resumeData.description,
 };
 
 export default function RootLayout({
