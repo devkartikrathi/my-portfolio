@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/app/lib/utils";
 import { motion } from "framer-motion";
+import { ThemeSwitch } from "@/app/components/theme-switch";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -35,6 +36,9 @@ export function Nav() {
             {item.name}
           </Link>
         ))}
+        <div className="pl-2 ml-2 border-l">
+          <ThemeSwitch />
+        </div>
       </div>
     </motion.nav>
   );

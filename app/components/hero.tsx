@@ -2,7 +2,6 @@
 
 import { resumeData } from "@/app/data/resume";
 import { Section } from "@/app/components/ui/section";
-import { Button } from "@/app/components/ui/button"; // We might need to create this or use standard HTML button styled
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
