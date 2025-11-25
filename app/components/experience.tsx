@@ -10,7 +10,7 @@ export function Experience() {
       <h2 className="text-xl font-bold mb-8">Work Experience</h2>
       <div className="flex flex-col gap-8">
         {resumeData.work.map((role) => (
-          <div key={role.company} className="flex flex-col gap-2">
+          <div key={role.company} className="flex flex-col gap-2 p-4 -mx-4 rounded-lg transition-colors hover:bg-accent/10">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0">
               <h3 className="font-semibold text-lg">{role.company}</h3>
               <span className="text-sm text-muted-foreground">
