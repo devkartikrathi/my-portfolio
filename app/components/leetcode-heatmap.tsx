@@ -1,9 +1,15 @@
 "use client";
 
-import { leetCodeData } from "@/app/data/leetcode";
 import { cn } from "@/app/lib/utils"; // Assuming this exists, or I'll just use clsx/tailwind-merge directly if not found
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+
+interface LeetCodeData {
+  totalActiveDays: number;
+  activeYears: number[];
+  streak: number;
+  submissionCalendar: Record<string, number>;
+}
 
 // Helper to format date
 const formatDate = (date: Date) => {
@@ -52,9 +58,35 @@ const getLeetCodeColor = (count: number, theme: string | undefined) => {
 export function LeetCodeHeatmap() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [leetCodeData, setLeetCodeData] = useState<LeetCodeData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
+    
+    // Fetch LeetCode data
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/leetcode');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch LeetCode data');
+        }
+        
+        const data = await response.json();
+        setLeetCodeData(data);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching LeetCode data:', err);
+        setError('Failed to load LeetCode data');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchData();
   }, []);
 
   // Generate calendar data
@@ -67,14 +99,16 @@ export function LeetCodeHeatmap() {
   // Parse submission calendar
   // The keys are timestamps in seconds.
   const submissions: Record<string, number> = {};
-  Object.entries(leetCodeData.submissionCalendar).forEach(([ts, count]) => {
-    // Convert timestamp to YYYY-MM-DD to match our loop
-    const date = new Date(parseInt(ts) * 1000);
-    // Adjust for timezone if needed, but usually these are UTC or local. 
-    // Let's just use local date string for simplicity as it matches the user's context.
-    const key = date.toISOString().split('T')[0];
-    submissions[key] = (submissions[key] || 0) + count;
-  });
+  if (leetCodeData) {
+    Object.entries(leetCodeData.submissionCalendar).forEach(([ts, count]) => {
+      // Convert timestamp to YYYY-MM-DD to match our loop
+      const date = new Date(parseInt(ts) * 1000);
+      // Adjust for timezone if needed, but usually these are UTC or local. 
+      // Let's just use local date string for simplicity as it matches the user's context.
+      const key = date.toISOString().split('T')[0];
+      submissions[key] = (submissions[key] || 0) + (count as number);
+    });
+  }
 
   // Helper to generate days for a specific month
   const getDaysForMonth = (year: number, monthIndex: number) => {
@@ -120,6 +154,40 @@ export function LeetCodeHeatmap() {
   const monthsToShow = getLast6Months();
 
   if (!mounted) return null;
+  
+  if (isLoading) {
+    return (
+      <div className="w-full flex flex-col gap-4">
+        <div className="w-full overflow-x-auto pb-2">
+          <div className="flex gap-4 w-fit mx-auto">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="flex flex-col gap-2 items-center">
+                <div className="grid grid-rows-7 grid-flow-col gap-[2px]">
+                  {Array.from({ length: 35 }).map((_, j) => (
+                    <div
+                      key={j}
+                      className="w-[10px] h-[10px] rounded-[2px] bg-neutral-200 dark:bg-neutral-800 animate-pulse"
+                    />
+                  ))}
+                </div>
+                <div className="h-3 w-8 bg-neutral-200 dark:bg-neutral-800 rounded animate-pulse" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error || !leetCodeData) {
+    return (
+      <div className="w-full flex flex-col gap-4">
+        <div className="text-center text-sm text-muted-foreground py-8">
+          {error || 'No LeetCode data available'}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex flex-col gap-4">

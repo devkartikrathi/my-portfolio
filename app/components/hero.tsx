@@ -39,7 +39,7 @@ export function Hero() {
   return (
     <Section className="flex min-h-screen flex-col items-center justify-start pt-20 md:pt-32 gap-8 max-w-2xl mx-auto px-4 md:px-0">
       <div className="flex flex-col gap-6 w-full max-w-full">
-        <div className="relative w-full mb-4 -mx-4 md:mx-0 w-[calc(100%+2rem)] md:w-full">
+        <div className="relative w-full mb-4">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-10 pointer-events-none" />
           <div className="opacity-50 grayscale-[0.5] hover:grayscale-0 transition-all duration-500">
             <LeetCodeHeatmap />
