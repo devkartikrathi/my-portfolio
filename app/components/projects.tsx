@@ -2,50 +2,53 @@
 
 import { resumeData } from "@/app/data/resume";
 import { Section } from "@/app/components/ui/section";
+import { BentoGrid, BentoGridItem } from "@/app/components/ui/bento-grid";
 import { Github } from "lucide-react";
 import Link from "next/link";
 
 export function Projects() {
   return (
     <Section id="projects">
-      <h2 className="text-xl font-bold mb-8">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {resumeData.projects.map((project) => (
-          <div
-            key={project.title}
-            className="flex flex-col gap-4 rounded-lg border p-6 hover:bg-muted/50 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-lg">{project.title}</h3>
-              {project.link && (
+      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl mb-8 text-left">Projects</h2>
+      <BentoGrid className="max-w-4xl mx-auto">
+        {resumeData.projects.map((project, i) => (
+          <BentoGridItem
+            key={i}
+            title={project.title}
+            description={
+              <div className="flex flex-col gap-2">
+                <ul className="list-disc list-inside text-xs text-muted-foreground">
+                  {project.description.map((desc, index) => (
+                    <li key={index}>{desc}</li>
+                  ))}
+                </ul>
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-md bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            }
+            icon={
+              project.link ? (
                 <Link
                   href={project.link.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground"
                 >
-                  <Github className="h-5 w-5" />
+                  <Github className="h-4 w-4" />
                 </Link>
-              )}
-            </div>
-            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-              {project.description.map((desc, index) => (
-                <li key={index}>{desc}</li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+              ) : null
+            }
+          />
         ))}
-      </div>
+      </BentoGrid>
     </Section>
   );
 }

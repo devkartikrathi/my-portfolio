@@ -216,7 +216,7 @@ export function LeetCodeHeatmap() {
                     );
                   })}
                 </div>
-                <span className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-wider">
+                <span className="text-xs font-bold text-foreground uppercase tracking-wider">
                   {month.name}
                 </span>
               </div>

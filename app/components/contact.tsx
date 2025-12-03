@@ -2,18 +2,21 @@
 
 import { resumeData } from "@/app/data/resume";
 import { Section } from "@/app/components/ui/section";
+import { BackgroundBeams } from "@/app/components/ui/background-beams";
 import { Mail, Linkedin, Github } from "lucide-react";
 import Link from "next/link";
 
 export function Contact() {
   return (
-    <Section id="contact" className="mb-16">
-      <h2 className="text-xl font-bold mb-8">Get in Touch</h2>
-      <div className="flex flex-col gap-4">
-        <p className="text-muted-foreground">
+    <Section id="contact" className="mb-16 relative w-full rounded-md bg-background antialiased">
+      <div className="max-w-2xl mx-auto p-4">
+        <h2 className="relative z-10 text-3xl font-bold tracking-tighter sm:text-4xl text-foreground text-center font-sans">
+          Get in Touch
+        </h2>
+        <p className="text-muted-foreground max-w-lg mx-auto my-2 text-sm text-center relative z-10">
           {resumeData.contact.text}
         </p>
-        <div className="flex gap-4 mt-4">
+        <div className="flex justify-center gap-4 mt-4 relative z-10">
           <Link
             href={`mailto:${resumeData.contact.email}`}
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
@@ -22,7 +25,7 @@ export function Contact() {
             <span>{resumeData.contact.email}</span>
           </Link>
         </div>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex justify-center flex-wrap gap-4 mt-4 relative z-10">
           {resumeData.contact.social.map((social) => (
             <Link
               key={social.name}
@@ -38,6 +41,7 @@ export function Contact() {
           ))}
         </div>
       </div>
+      <BackgroundBeams />
     </Section>
   );
 }
