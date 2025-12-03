@@ -23,6 +23,8 @@ const iconMapping: { [key: string]: string } = {
 };
 
 import { LeetCodeHeatmap } from "@/app/components/leetcode-heatmap";
+import { LayoutTextFlip } from "@/app/components/ui/layout-text-flip";
+import { EncryptedText } from "@/app/components/ui/encrypted-text";
 
 
 import { motion } from "framer-motion";
@@ -79,10 +81,11 @@ export function Hero() {
               </span>
               {resumeData.status.text}
             </div>
-            <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed">
-              <span className="text-orange-500 font-semibold">{resumeData.roles[0]}</span>{" "}
-              {resumeData.summary}
-            </p>
+            <div className="max-w-[600px] text-muted-foreground md:text-lg/relaxed">
+              <LayoutTextFlip text="" words={["Software Developer", "AI Engineer", "GenAI Engineer"]} />
+              {" "}
+              <EncryptedText text={resumeData.summary} />
+            </div>
             <div className="flex gap-4 mt-1">
               {resumeData.contact.social.map((social) => (
                 <Link
